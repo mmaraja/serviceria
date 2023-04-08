@@ -1,0 +1,19 @@
+/*!
+Theme Name: serviceria
+Theme URI: https://underscoretw.com/
+Author: underscoretw.com
+Author URI: https://underscoretw.com/
+Description: A custom theme based on _tw
+Version: 1.0.0
+Tested up to: 6.0
+Requires PHP: 7.4
+Text Domain: tw
+
+*/
+#site-navigation .menu {
+    display: flex;
+    justify-content: flex-end;
+}
+#site-navigation .menu li {
+    margin-right: 50px;
+}

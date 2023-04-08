@@ -1,0 +1,32 @@
+/**
+ * Custom `@font-face` rules
+ *
+ * These will be added immediately before Tailwind’s `base` layer.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+ @font-face {
+    font-family: 'sg-regular';
+    src:    url('..//../theme/fonts/Regular/Sporting_Grotesque-Regular_web.eot');
+    src:    url('..//../theme/fonts/Regular/Sporting_Grotesque-Regular_web.eot?#iefix') format('embedded-opentype'),
+            url('..//../theme/fonts/Regular/SportingGrotesque-Regular.woff') format('woff'),
+            url('..//../theme/fonts/Regular/SportingGrotesque-Regular.woff2') format('woff2'),
+            url('..//../theme/fonts/Regular/Sporting_Grotesque-Regular_web.ttf') format('truetype'),
+            url('..//../theme/fonts/Regular/Sporting_Grotesque-Regular_web.svg#svgFontName') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sg-bold';
+    src:    url('..//../theme/fonts/Bold/Sporting_Grotesque-Bold_web.eot');
+    src:    url('..//../theme/fonts/Bold/Sporting_Grotesque-Bold_web.eot?#iefix') format('embedded-opentype'),
+            url('..//../theme/fonts/Bold/Sporting_Grotesque-Bold_web.woff') format('woff'),
+            url('..//../theme/fonts/Bold/Sporting_Grotesque-Bold_web.woff2') format('woff2'),
+            url('..//../theme/fonts/Bold/Sporting_Grotesque-Bold_web.ttf') format('truetype'),
+            url('..//../theme/fonts/Bold/Sporting_Grotesque-Bold_web.svg#svgFontName') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

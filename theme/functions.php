@@ -116,12 +116,13 @@ add_action( 'widgets_init', 'tw_widgets_init' );
 function tw_scripts() {
 	wp_enqueue_style( 'serviceria-style', get_stylesheet_uri(), array(), TW_VERSION );
 	wp_enqueue_script( 'serviceria-script', get_template_directory_uri() . '/js/script.min.js', array(), TW_VERSION, true );
+	wp_register_script( 'jQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js', null, null, true );
+wp_enqueue_script('jQuery');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'tw_scripts' );
+
+
 
 /**
  * Add the block editor class to TinyMCE.

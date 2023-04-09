@@ -9,7 +9,7 @@
 
 ?>
 
-<header class="w-full text-pinkColor pt-6 pb-2 text-lg fixed z-20" >
+<header class="w-full text-pinkColor pt-6 pb-2 text-lg fixed z-20 h-[60px]" >
 	<div class="container flex justify-between items-end">
 		<div class="w-3/4">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">

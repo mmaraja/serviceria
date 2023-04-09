@@ -93,4 +93,15 @@ body {
 .pin-spacer {
     top: 0 !important;
 }
+.container {
+    overflow: hidden !important;
 
+}
+.text-on-path {
+    font-size: 50px;
+    fill: black;
+}
+
+svg {
+width: 100%;
+}

@@ -16,8 +16,7 @@ function tw_pingback_header() {
 add_action( 'wp_head', 'tw_pingback_header' );
 
 
-wp_register_script( 'jQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js', null, null, true );
-wp_enqueue_script('jQuery');
+
 
 /*
 * Custom CPT Serviceria projects

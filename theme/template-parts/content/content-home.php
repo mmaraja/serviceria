@@ -52,51 +52,46 @@
     </div>
     
     <div id="panel-2" class="!w-[200vw] module full-screen orange">
-
-
-	<div class="container-this" data-scroll-container>
-                               
-    <div id="trigger" class="ml-[50vw] max-h-[100vh] h-[100vh] w-[150vw] flex">
+    <?php
+       
+       $query->the_post(); 
+       $sec_post = $query->posts[1];
+       if($sec_post) {
+           $url = wp_get_attachment_url( get_post_thumbnail_id($sec_post->ID), 'thumbnail' ); ?>
+       
+       <div class="ml-[100vw] img w-[100vw] h-[100vh]" style="background-image: url('<?php echo $url  ?>')"></div>            
+	<div class="container-this" data-scroll-container >
+                   
+    <div id="trigger" class="max-h-[100vh] h-[100vh] w-[150vw] flex" >
 
       <svg viewBox="0 0 1440 400" fill="none">
         <path id="textPath" d="M0 .5c155.69 0 155.69 64 311.39 64S467.08.5 622.77.5s155.7 64 311.39 64 155.7-64 311.39-64 155.7 64 311.39 64" stroke="black" />
-        <text>
-          <textPath id="textOnPath1" class="text-on-path" href="#textPath">There’s no way we can spread the tsunami </textPath>
+        <text x="1000">
+        <?php   
+                            $slide_text =  get_field( 'slide_text',  $sec_post->ID ) ;
+                            
+                            if( $slide_text ): ?>
+                                
+                                <textPath id="textOnPath1" style="position: relative; padding-left:500px" class="text-on-path" href="#textPath">we make it personal because it is personal</textPath>
+                            <?php endif; ?>
+         
         </text>
       </svg>
     </div>
   
     </div>
                     
-
+    
+                
+                     
+            <?php }
+            
+     ?>
 
     </div>
     <div id="panel-3" class="module full-screen purple">
     <div class="container h-full">
-        <?php
-       
-                $query->the_post(); 
-                $sec_post = $query->posts[1];
-                if($sec_post) {
-                    $url = wp_get_attachment_url( get_post_thumbnail_id($sec_post->ID), 'thumbnail' ); ?>
-                
-                    <div class=" img w-3/4 pb-8 h-homeHeight" style="background-image: url('<?php echo $url  ?>')">
-                    </div>
-                
-                    <div id="text" class="absolute top-0 left-0 w-[100vw] h-full flex items-center z-[50]">
-                         <h2 id="scrolling-text" class="lg:w-[400px] slide-text text-purpleColor text-7xl md:mr-20 ">
-                            <?php   
-                            $slide_text =  get_field( 'slide_text',  $sec_post->ID ) ;
-                            
-                            if( $slide_text ): ?>
-                                <?php the_field('slide_text',  $sec_post->ID  ); ?>
-                            <?php endif; ?>
-                            </h2> 
-                
-                    </div>              
-            <?php }
-            
-     ?>
+    
         </div>  
     </div>
     <div id="panel-4" class="parent module full-screen green text-container">

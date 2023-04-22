@@ -802,6 +802,10 @@ body {
   position: absolute;
 }
 
+.relative {
+  position: relative;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -840,6 +844,14 @@ body {
 
 .ml-\[10vw\] {
   margin-left: 10vw;
+}
+
+.ml-\[5vw\] {
+  margin-left: 5vw;
+}
+
+.ml-\[100vw\] {
+  margin-left: 100vw;
 }
 
 .block {

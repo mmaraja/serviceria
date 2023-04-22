@@ -17,7 +17,7 @@ gsap.to(container, {
       trigger: container,
       invalidateOnRefresh: true,
       pin: true,
-      scrub: 1,
+      scrub: 0.2,
       start: 'top 80',
 
       end: () => "+=" + container.offsetWidth
@@ -32,8 +32,8 @@ gsap.to(large, {
   scrollTrigger: {
     trigger: large,
     pin: true,
-    start: "left left",
-    end: () => "+=1000",
+    start: "center right",
+    end: () => "+=" + container.offsetWidth,
     scrub: 1,
     invalidateOnRefresh: true,
     

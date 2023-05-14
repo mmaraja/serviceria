@@ -98,8 +98,19 @@ add_action( 'after_setup_theme', 'tw_setup' );
 function tw_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => __( 'Footer', 'serviceria' ),
+			'name'          => __( 'Footer - contact', 'serviceria' ),
 			'id'            => 'sidebar-1',
+			'description'   => __( 'Add widgets here to appear in your footer.', 'serviceria' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer - contact(mobile)', 'serviceria' ),
+			'id'            => 'sidebar-2',
 			'description'   => __( 'Add widgets here to appear in your footer.', 'serviceria' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
@@ -147,3 +158,14 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+add_filter( 'pre_get_posts', 'custom_get_posts' );
+
+function custom_get_posts( $query ) {
+
+if( is_category() || is_archive() ) { 
+$query->query_vars['order'] = 'ASC';
+}
+
+return $query;
+}

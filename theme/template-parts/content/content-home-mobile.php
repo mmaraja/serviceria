@@ -8,7 +8,7 @@
  */
 
 ?>
-<div class="container-wrapper !hidden lg:!flex">
+<div class="container-wrapper !flex lg:!hidden">
 <?php
         $args = array(
             'post_type' => 'slides', 

@@ -30,8 +30,8 @@ $('.item video').each(function() {
     $(this).parent().addClass("vertical");
   }        
 });
- $('.item a').hover(
-   function(){
+$('.item a').hover(
+  function(){
       $(this).find('img').css('opacity','.6');
       $(this).find('video').css('opacity','.6');
       $(this).find('span').fadeIn();
@@ -45,49 +45,15 @@ $('.item video').each(function() {
   }
 );
 
-
 $(document).ready(function() {
   if($('body').hasClass('single-projects')) {
     $('body').find('.menu .menu-item:first-child a').addClass('active-link');
   }
   if($(window).width() < 1024) {
     $('#words p br').remove();
-   
 
   }
-
-  if ('ontouchstart' in window || navigator.maxTouchPoints) {
-    $('.item a').on('touchend', function(e) {
-      var $element = $(this);
-      var touchCount = $element.data('touchCount') || 0;
-      touchCount++;
-
-      if (touchCount === 1) {
-        // Perform the first touch action (e.g., add a hover class)
-        $(this).find('img').css('opacity','.6');
-        $(this).find('video').css('opacity','.6');
-        $(this).find('span').fadeIn();
-        $(this).find('span').css('display', 'flex');
-      } else if (touchCount === 2) {
-        // Redirect to a link on the second touch
-        window.location.href = $(this).attr('href');
-        $(this).find('img').css('opacity','1');
-        $(this).find('video').css('opacity','1');
-        $(this).find('span').fadeOut();
-      }
-
-      // Store the updated touchCount and href data
-      $element.data('touchCount', touchCount);
-      $element.data('href', $element.find('.item a').attr('href'));
-
-      // Prevent default touchend behavior
-      e.preventDefault();
-    });
-  }
-  
-  
 })
-
 $( ".open-close-btn" ).on('click touchstart', function(e) {
   // prevent default anchor click 
   e.preventDefault();
@@ -110,15 +76,13 @@ function customPopup() {
 
   $btnClosePopup.on('click', function () {
       $(".js-custom-popup").removeClass('is-active');
-      $popup.css('transition', 'transform 2s');
- 
+      $popup.css('transition', '0.4s')
   });
 
   $popup.on('click', function (event) {
       if (!$(event.target).closest('.js-custom-popup-holder').length && !$(event.target).is('js-custom-popup')) {
           if ($popup.hasClass('is-active')) {
               $popup.removeClass('is-active');
-            
           }
       }
   });
@@ -189,7 +153,7 @@ if($(window).width() > 1024) {
    $('.js-open-popup').click(function () {
     setInterval(function(){ 
       $('#words').animate({'opacity': 1, right: '300px'}, 400, function(){
-        $(this).html(words[(i = (i + 1) % words.length)]).animate({'opacity': 1, right: "0"}, 800);    
+        $(this).html(words[(i = (i + 1) % words.length)]).animate({'opacity': 1, right: "0"}, 400);    
     });
 
     }, 4000)
@@ -218,13 +182,12 @@ const tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".container-wrapper",
     pin: true,
-    scrub: 1,
-    end: "+=20000",
+    scrub: 0.5,
+    end: "+=6000",
   
   }
 });
 const stops = [];
-
 
 sections.forEach((section, index) => {
   if (section.dataset.pin) stops.push(index);
@@ -247,8 +210,8 @@ stops.forEach((stop, index) => {
   }
   if (currentSection.querySelector(".panel_3_content")) {
     console.log("p5");
-    tl.to(".img-wrapper", {
-      x: () => "0",
+    tl.to(".panel_3_img", {
+      x: () => "0vw",
     })
   }
    if (currentSection.querySelector(".panel_4_content")) {
@@ -263,6 +226,8 @@ stops.forEach((stop, index) => {
     tl.to(".img-container", {
       x: () => "0vw",
     })
+   
+   
    }
   
  
@@ -275,70 +240,46 @@ stops.forEach((stop, index) => {
   }
 });
 
-// gsap.to(".text-wrap", {
-//   x: "150vw",
-//   ease: "none",
-//   // duration: 3,
-//   scrollTrigger: {
-//       trigger: ".text-start",
-//       scrub: true,
-//       start: "left 100%",
-//       end: "left -400%"
-//       // end: "+=3500",
-//       // markers: true
-//       // start: "left right"
-//   }
-// })
-gsap.to(".text", {
-  x: "0",
+gsap.to(".text-wrap", {
+  x: "150vw",
   ease: "none",
   // duration: 3,
   scrollTrigger: {
-      trigger: ".panel-3",
+      trigger: ".text-start",
       scrub: true,
-      start: "left 150%",
+      start: "left -80%",
+      end: "left -400%"
+      // end: "+=3500",
+      // markers: true
+      // start: "left right"
+  }
+})
+gsap.to(".text", {
+  x: "-30vw",
+  ease: "none",
+  // duration: 3,
+  scrollTrigger: {
+      trigger: ".text-start",
+      scrub: true,
+      start: "left -100%",
       // end: "left 50%"
-      end: "+=50000",
+      end: "+=2500",
       // markers: true
       // start: "left right"
   }
 })
 let tle = gsap.timeline()
   .to(svgText, {
-    x: "-300vw",
+    x: "-100vw",
     attr: {
-      startOffset: -13000
+      startOffset: -5200
     }
 })
-
 
 ScrollTrigger.create({
   animation: tle,
   scrub: true
 });
-
-gsap.set(".panel_3_img", { x: '100vw', opacity:1, autoAlpha: 1});
-
-gsap.to(
-  ".panel_3_img",
-  {
-    x: '0',
-    opacity:1,
-    autoAlpha: 1,
-    duration: 1,
-    // Adjust the duration as per your preference
-    ease: 'power2.out', // Adjust the easing function as desired
-    scrollTrigger: {
-      trigger: ".panel-3",
-      pin: true,
-      containerAnimation: tl,
-      start: "left 50%",
-      end: "+=10000",
-      toggleActions: "play none none reset",
-      id: "1",
-    }
-  }, 0
-);
 
 gsap.set(".revealRtoL", { x: '100vw', opacity:0, autoAlpha: 0});
 
@@ -355,7 +296,7 @@ gsap.to(
       trigger: ".panel-4",
       pin: true,
       containerAnimation: tl,
-      start: "-100%",
+      start: "-120%",
       toggleActions: "play none none reset",
       id: "1",
     }
@@ -389,8 +330,8 @@ const timeline = gsap.timeline({
     pin: true,
     containerAnimation: tl,
     scrub: 2,
-    start: "-100%",
-    end: "+=6000" 
+    start: "-120%",
+    end: "+=4500" 
    
   }
 });
@@ -424,13 +365,13 @@ gsap.fromTo(
   image,
   { x: '40%' },
   {
-    x: '-20%',
+    x: '0%',
     duration: 1, // Adjust the duration as per your preference
     ease: 'power2.out', // Adjust the easing function as desired
     scrollTrigger: {
       trigger: ".panel-5",
       containerAnimation: tl,
-      start: "-120%",
+      start: "-100%",
       toggleActions: "play none none reset",
       id: "3",
     }
@@ -443,18 +384,20 @@ gsap.fromTo(
   image2,
   { x: '300%' },
   {
-    x: '-20%',
+    x: '0%',
     duration: 1, // Adjust the duration as per your preference
     ease: 'power2.out', // Adjust the easing function as desired
     scrollTrigger: {
       trigger: ".panel-5",
       containerAnimation: tl,
-      start: "-120%",
+      start: "-100%",
       toggleActions: "play none none reset",
       id: "4",
     }
   }
 );
+
+
 
 let left_text = gsap.utils.toArray('#text_2 > p');
 let right_text = gsap.utils.toArray('#text_1 > p');
@@ -465,11 +408,11 @@ const timelineVerticalText = gsap.timeline({
   onComplete: startNextTimeline,
   scrollTrigger: {
     trigger: ".panel-5",
-   
+    pin: true,
     containerAnimation: tl,
-    scrub: 2,
-    start: "left 60%",
-    end: "+=4500",
+    scrub: 1,
+    start: "left 50%",
+    end: "+=100%",
   }
 });
 
@@ -478,43 +421,39 @@ gsap.set(left_text, {xPercent:-150});
 gsap.set(right_text, {xPercent:150});
 
 
-timelineVerticalText
-.to(
+timelineVerticalText.to(
   left_text,
-  {xPercent: 600}
+  {xPercent: 300, duration: 2}, 
 )
+
 .to(
   right_text,
-  {xPercent: -500}, 0, 
+  {xPercent: -300, duration: 2}, 0, 
 )
-
-
-
 
 
 function startNextTimeline() {
   const footer = gsap.timeline({
     scrollTrigger: {
       trigger: '.panel-5',
+      start: '-10%',
       containerAnimation: tl,
+      end: '0%',
       pin: true,
-      start: "-5%",
-      end: "50px",
       scrub: 2,
     }
   })
   footer.fromTo(
     "#home-footer",
-    {  x: "25vw" },
+    {  x: "400%" },
     {
-    x: "0%",
+    x: "40%",
     ease: "back.out(2)"
   }).to('.mov', {
-    x: "-30%"
+    x: "-40%"
   }, 0)
 
 }
- 
 
  
 
@@ -548,14 +487,13 @@ let tleMob = gsap.timeline()
       x: '-100%',
       scrollTrigger: {
         trigger: '.panel-mob-1',
-        start: 'top 100px', 
-        end: '+=300%',
+        start: 'left right', 
+        end: '+=200%',
         scrub: 1,
-        pin: true,
       },
       ease: 'power2.out', // Adjust the easing function as desired
       attr: {
-        startOffset: -4000
+        startOffset: -2000
       }
     }
   );
@@ -584,7 +522,7 @@ const timelineGalMob = gsap.timeline({
     pin: true,
     scrub: 1,
     start: () => "top top",
-    end: "+=1800",
+    end: "+=2000",
    
   }
 });
@@ -650,5 +588,3 @@ const updateViewportElements = () => {
 window.addEventListener('resize', updateViewportElements);
 
 updateViewportElements();
-
-

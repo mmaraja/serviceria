@@ -22,5 +22,9 @@ get_header();
 	</div>
 	</div>
 	
+<div class="container">
+<?php get_template_part( 'template-parts/content/content', 'modal' ); ?>
+</div>
+<?php get_template_part( 'template-parts/content/content', 'modal-credits' ); ?>
 
 <?php get_footer(); ?>

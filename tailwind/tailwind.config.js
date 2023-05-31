@@ -23,7 +23,8 @@ module.exports = {
 		// Extend the default Tailwind theme.
 		colors: {
 			'pinkColor': '#FF6565',
-			'purpleColor': '#5A619D'
+			'purpleColor': '#5A619D',
+			'white': '#FFF'
 		},
 		container: {
 			padding: {

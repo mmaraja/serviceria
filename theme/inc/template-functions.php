@@ -104,3 +104,4 @@ function custom_post_type_home() {
 	  
 add_action( 'init', 'custom_post_type_home', 0 );
 remove_filter ('acf_the_content', 'wpautop');
+

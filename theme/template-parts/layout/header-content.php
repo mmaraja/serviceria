@@ -9,7 +9,7 @@
 
 ?>
 
-<header class="w-full text-pinkColor pt-6 pb-2 text-lg fixed z-20 h-[60px] " >
+<header class="w-[100vw] text-pinkColor pt-6 pb-2 text-lg fixed z-50 h-[60px] " >
 	<div class="container flex justify-between items-center md:items-end">
 		<div class="w-3/4">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -29,7 +29,7 @@
 			);
 			?>
 			</nav>
-			<nav class="flex md:hidden" id="site-navigation" aria-label="<?php esc_attr_e( 'Main Navigation', 'serviceria' ); ?>">
+			<nav class="flex justify-end md:hidden" id="site-navigation" aria-label="<?php esc_attr_e( 'Main Navigation', 'serviceria' ); ?>">
 				
 			<a id="hamburger-icon" href="#" class="open-close-btn"><span></span>
 				<span></span>
@@ -37,7 +37,8 @@
 			</a>
 			<div id="myNav" class="overlay">
 				<div class="overlay-content r-4">
-				<a class="menu-home overflow-hidden hidden mr-4 float-right text-end" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">About</a>
+					<a class="menu-home text-purpleColor overflow-hidden hidden float-right text-end" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">About</a>
+					<a class="menu-home text-purpleColor overflow-hidden hidden float-right text-end" href="<?php echo esc_url( '/projects' ); ?>" rel="home">Projects</a>
 				</div>
 			</div>
 			</nav>
